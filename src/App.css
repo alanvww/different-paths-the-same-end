@@ -1,3 +1,8 @@
+@font-face {
+	font-family: Ku-Mincho;
+	src: local('Ku-Mincho'), url(./assets/fonts/KuMincho-R.otf) format('otf');
+}
+
 * {
 	padding: 0;
 	margin: 0;
@@ -10,6 +15,12 @@
 	-ms-user-select: none;
 }
 
+html,
+body {
+	overflow-x: hidden;
+	margin: 0;
+}
+
 body {
 	overscroll-behavior: none;
 	-webkit-overflow-scrolling: touch;
@@ -19,11 +30,9 @@ body {
 h1 {
 	text-align: center;
 	font-size: 20rem;
-	-webkit-text-stroke-width: 2px;
-	-webkit-text-stroke-color: grey;
 	letter-spacing: -2rem;
 	line-height: -10rem;
-	color: transparent;
+	color: black;
 }
 
 hr {
@@ -42,33 +51,47 @@ hr {
 	flex-direction: column-reverse;
 	writing-mode: vertical-rl;
 	text-orientation: mixed;
+	font-family: Ku-Mincho;
+	font-weight: 400;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 
 .container {
-	width: 100%;
+	width: fit-content;
 	height: 100vh;
 	display: flex;
 	flex-wrap: nowrap;
 	overscroll-behavior: none;
+	margin: 0;
+	min-width: 100vw !important;
+	overflow-x: visible;
 }
 
 .horizontal {
-	width: max-content;
-	overflow-x: visible;
+	width: fit-content;
 	writing-mode: vertical-rl;
 	text-orientation: mixed;
 	text-indent: 2rem;
+	margin: 0;
 	transform: translateX(-100%);
+	min-width: 100vw !important;
+	overflow-x: visible;
 }
 
 .panel-content {
-	overflow-x: visible;
+	width: fit-content;
 	line-height: 1.8;
-	margin-right: 5%;
 	margin-top: 10%;
 	margin-bottom: 10%;
-	margin-left: 100vw;
+	margin-left: 60vw;
 	padding: 0;
+	font-family: Ku-Mincho;
+	font-weight: 400;
+	font-style: normal;
+	text-rendering: optimizeSpeed;
+	min-width: 100vw !important;
 }
 
 .panel-eng {
@@ -85,4 +108,7 @@ hr {
 	margin-top: 10%;
 	margin-bottom: 10%;
 	padding: 0;
+	font-family: yu-mincho-pr6n, sans-serif;
+	font-weight: 400;
+	font-style: normal;
 }
