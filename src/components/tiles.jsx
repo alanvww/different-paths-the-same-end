@@ -1,4 +1,4 @@
-import './tiles.module.css';
+import './tiles.css';
 import React from 'react';
 import { gsap } from 'gsap';
 import { useEffect, useRef, useState } from 'react';

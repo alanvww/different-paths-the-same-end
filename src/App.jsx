@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { AdobeFonts } from 'react-adobe-fonts';
 import Text from './components/text';
+import Footer from './components/footer';
 import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,6 +21,7 @@ function App() {
 		setIsLoading(false);
 		setIsActive(true);
 	}, []);
+
 	return (
 		<>
 			<AdobeFonts kitId="lkf2tqm" onLoading={onLoading} onActive={onActive} />
@@ -29,9 +31,7 @@ function App() {
 				<h1>同歸</h1>
 			</div>
 			<Text />
-			<div className="last-panel">
-				<h1>The End</h1>
-			</div>
+			<Footer />
 		</>
 	);
 }

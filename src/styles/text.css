@@ -1,0 +1,105 @@
+/* Image Style */
+
+ul {
+	overflow: hidden;
+}
+
+li {
+	width: 100%;
+	height: 100%;
+}
+
+img {
+	margin: 5%;
+	max-width: 80%;
+	max-height: 80%;
+	animation: blr 2s;
+	filter: blur(5px);
+	clip-path: inset(20% 20% round 20px);
+	transition: 0.8s;
+}
+
+img:hover {
+	filter: blur(0);
+	clip-path: inset(0% 0% round 0px);
+}
+
+/* Main Container */
+
+.container {
+	width: fit-content;
+	height: 100vh;
+	display: flex;
+	flex-wrap: nowrap;
+	overscroll-behavior: none;
+	margin: 0;
+	min-width: 100vw !important;
+	overflow-x: visible;
+}
+
+.horizontal {
+	width: fit-content;
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+	text-indent: 2rem;
+	margin: 0;
+	transform: translateX(-100%);
+	min-width: 100vw !important;
+	overflow-x: visible;
+}
+
+.panel-content {
+	width: fit-content;
+	line-height: 1.8;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	margin-left: 60vw;
+	padding: 0;
+	font-family: Ku-Mincho;
+	font-weight: 400;
+	font-style: normal;
+	text-rendering: optimizeSpeed;
+	min-width: 100vw !important;
+}
+
+.panel-eng {
+	width: 100%;
+	height: max-content;
+	text-indent: 2rem;
+}
+
+.content-eng {
+	line-height: 1.8;
+	margin-left: 5%;
+
+	margin-right: 5%;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	padding: 0;
+	font-family: yu-mincho-pr6n, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.panel-eng > button {
+	display: block;
+	width: 100vw;
+	height: 10vh;
+	border: none;
+	color: black;
+	background-color: rgb(255, 255, 255);
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font-size: 2rem;
+	font-family: yu-mincho-pr6n, sans-serif;
+	margin-bottom: 1%;
+
+	transition: all 0.3s ease-in-out;
+}
+
+.panel-eng > button:hover {
+	background-color: #000000;
+	color: white;
+	text-decoration: underline;
+}

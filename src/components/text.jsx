@@ -1,8 +1,7 @@
 import React from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useLayoutEffect, useRef, useState } from 'react';
-import './text.module.css';
+import '../styles/text.css';
 
 export default function Text() {
 	const horizontalSlide = useRef(null);
@@ -11,7 +10,6 @@ export default function Text() {
 
 	useLayoutEffect(() => {
 		const ctx = gsap.context((self) => {
-			const sections = self.selector('.horizontal');
 			gsap.to(horizontalSlide.current, {
 				xPercent: 100,
 				ease: 'slow',
@@ -493,9 +491,11 @@ export default function Text() {
 				</div>
 			</div>
 			<div className="panel-eng">
-				<button onClick={showMore}>English Version</button>
+				<button className="viewTextButton no-select" onClick={showMore}>
+					{'       English Version       '}
+				</button>
 				{more && (
-					<div className="content-eng">
+					<div className="content-eng no-select">
 						<p>
 							The pandemic has started a trend of cooking at home. People make
 							bread, cakes, and even some dishes that can only be cooked by
