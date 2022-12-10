@@ -1,76 +1,56 @@
-import './tiles.css';
 import React from 'react';
-import { gsap } from 'gsap';
-import { useEffect, useRef, useState } from 'react';
+import anime from 'animejs';
 
-export default function Tiles() {
-	const wrapper = useRef(null);
-
-	let columns = 0,
-		rows = 0,
-		toggled = false;
-
-	const toggle = () => {
-		toggled = !toggled;
-
-		document.body.classList.toggle('toggled');
+export default class Tiles extends React.Component {
+	state = {
+		columns: 0,
+		rows: 0,
+		total: 1,
 	};
 
-	const handleOnClick = (index) => {
-		toggle();
-		/*
-		gsap.to({
-			targets: '.tile',
-			opacity: toggled ? 0 : 1,
+	handleStagger = (i) => {
+		const { columns, rows } = this.state;
+		const el = i.target.id;
+		anime({
+			targets: '.grid-item',
+			backgroundColor: `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
+				Math.random() * 255
+			)}, ${Math.floor(Math.random() * 255)})`,
+			delay: anime.stagger(50, { grid: [columns, rows], from: el }),
 		});
-        */
 	};
 
-	const createTile = (index) => {
-		const tile = React.createElement(
-			'div',
-			{ style: { opacity: `${toggled ? 0 : 1}` } },
-			{ className: 'tile' },
-			{ onClick: () => handleOnClick(index) }
+	getGridSize = () => {
+		const columns = Math.floor(document.body.clientWidth / 50);
+		const rows = Math.floor(document.body.clientHeight / 50);
+
+		this.setState({ columns, rows, total: rows * columns });
+		anime({
+			targets: '.grid-item',
+			backgroundColor: '#fff',
+			duration: 0,
+			easing: 'linear',
+		});
+	};
+
+	componentDidMount() {
+		this.getGridSize();
+		window.addEventListener('resize', this.getGridSize);
+	}
+	render() {
+		const { total, columns, rows } = this.state;
+		console.log([columns, rows], total);
+		return (
+			<div id="grid">
+				{[...Array(total)].map((x, i) => (
+					<div
+						key={i}
+						className="grid-item"
+						id={i}
+						onClick={(i) => this.handleStagger(i)}
+					/>
+				))}
+			</div>
 		);
-
-		return tile;
-	};
-
-	const createTiles = (quantity) => {
-		Array.from(Array(quantity)).map((tile, index) => {
-			wrapper.current.appendChild(createTile(index));
-		});
-	};
-
-	const createGrid = () => {
-		wrapper.current.innerHTML = '';
-
-		const size = window.innerWidth > 800 ? 100 : 50;
-		console.log(size);
-
-		columns = Math.floor(window.innerWidth / size);
-		rows = Math.floor(window.innerHeight / size);
-
-		wrapper.current.style.setProperty('--columns', columns);
-		wrapper.current.style.setProperty('--rows', rows);
-
-		createTiles(columns * rows);
-	};
-
-	useEffect(() => {
-		createGrid();
-		window.addEventListener('resize', createGrid);
-	}, []);
-
-	return (
-		<>
-			<div id="tiles" ref={wrapper}></div>
-
-			<h1 id="title" className="centered">
-				The name of the game is
-				<span className="fancy">Chess</span>.
-			</h1>
-		</>
-	);
+	}
 }

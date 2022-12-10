@@ -5,7 +5,9 @@ import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { AdobeFonts } from 'react-adobe-fonts';
 import Text from './components/text';
 import Footer from './components/footer';
+import Tiles from './components/tiles';
 import './App.css';
+import './styles/tiles.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,8 +29,11 @@ function App() {
 			<AdobeFonts kitId="lkf2tqm" onLoading={onLoading} onActive={onActive} />
 
 			<div className="first-panel no-select">
-				<h1>殊途</h1>
-				<h1>同歸</h1>
+				<Tiles />
+				<span className="title">
+					<h1>殊途同歸</h1>
+					<h1 className="eng">Different paths, the same end.</h1>
+				</span>
 			</div>
 			<Text />
 			<Footer />
