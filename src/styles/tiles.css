@@ -17,6 +17,7 @@
 	justify-content: center;
 	position: absolute;
 	pointer-events: auto;
+	z-index: 2;
 }
 .grid-item {
 	pointer-events: auto;

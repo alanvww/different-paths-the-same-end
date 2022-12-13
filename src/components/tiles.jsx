@@ -13,9 +13,9 @@ export default class Tiles extends React.Component {
 		const el = i.target.id;
 		anime({
 			targets: '.grid-item',
-			backgroundColor: `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
+			backgroundColor: `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(
 				Math.random() * 255
-			)}, ${Math.floor(Math.random() * 255)})`,
+			)}, ${Math.floor(Math.random() * 255)},0.2)`,
 			delay: anime.stagger(50, { grid: [columns, rows], from: el }),
 		});
 	};

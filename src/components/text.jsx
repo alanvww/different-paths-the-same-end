@@ -1,7 +1,10 @@
 import React from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useLayoutEffect, useRef, useState } from 'react';
 import '../styles/text.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Text() {
 	const horizontalSlide = useRef(null);
@@ -17,11 +20,11 @@ export default function Text() {
 					trigger: horizontalSlide.current,
 					pin: true,
 					pinSpacer: true,
-					markers: false,
+					markers: true,
 					scrub: 1,
 					start: 'top top',
 
-					end: () => '+=' + content.current.clientWidth / 4 + ' top',
+					end: () => '+=' + content.current.clientWidth / 3,
 
 					/*() =>
 						'=' +
@@ -30,6 +33,12 @@ export default function Text() {
 				},
 			});
 		}, horizontalSlide);
+
+		window.addEventListener('resize', () => {
+			ScrollTrigger.refresh();
+			this.forceUpdate();
+		});
+
 		return () => ctx.revert();
 	}, []);
 
