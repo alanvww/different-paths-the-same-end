@@ -12,7 +12,6 @@ export default function Text() {
 	const content = useRef();
 
 	ScrollTrigger.normalizeScroll(true);
-	ScrollTrigger.refresh();
 
 	useEffect(() => {
 		const ctx = gsap.context((self) => {
@@ -22,7 +21,7 @@ export default function Text() {
 				scrollTrigger: {
 					trigger: horizontalSlide.current,
 					pin: true,
-					markers: true,
+					markers: false,
 					anticipatePin: 1,
 					scrub: 1.23,
 					start: 'top top',
@@ -33,12 +32,8 @@ export default function Text() {
 			});
 		}, content.current);
 
-		ScrollTrigger.refresh();
-
 		return () => ctx.revert();
 	}, []);
-
-	ScrollTrigger.refresh();
 
 	window.addEventListener('resize', () => {
 		window.location.reload();
