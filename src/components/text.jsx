@@ -1,46 +1,48 @@
 import React from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useEffect, useRef, useState } from 'react';
 import '../styles/text.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Text() {
-	const horizontalSlide = useRef(null);
-	const horizontalPanel = useRef(null);
-	const content = useRef(null);
+	const horizontalSlide = useRef();
+	const horizontalPanel = useRef();
+	const content = useRef();
 
-	useLayoutEffect(() => {
+	ScrollTrigger.normalizeScroll(true);
+	ScrollTrigger.refresh();
+
+	useEffect(() => {
 		const ctx = gsap.context((self) => {
-			gsap.to(horizontalSlide.current, {
+			gsap.to(content.current, {
 				xPercent: 100,
-				ease: 'slow',
+				ease: 'none',
 				scrollTrigger: {
 					trigger: horizontalSlide.current,
 					pin: true,
-					pinSpacer: true,
 					markers: true,
-					scrub: 1,
+					anticipatePin: 1,
+					scrub: 1.23,
 					start: 'top top',
-
-					end: () => '+=' + content.current.clientWidth / 3,
-
-					/*() =>
-						'=' +
-						window.innerWidth +
-						ScrollTrigger.maxScroll(horizontalPanel.current, true),*/
+					invalidateOnRefresh: true,
+					immediateRender: false,
+					end: () => '+=' + content.current.offsetWidth + ' top',
 				},
 			});
-		}, horizontalSlide);
+		}, content.current);
 
-		window.addEventListener('resize', () => {
-			ScrollTrigger.refresh();
-			this.forceUpdate();
-		});
+		ScrollTrigger.refresh();
 
 		return () => ctx.revert();
 	}, []);
+
+	ScrollTrigger.refresh();
+
+	window.addEventListener('resize', () => {
+		window.location.reload();
+	});
 
 	// English version toggle
 	const [more, setMore] = useState(false);
@@ -88,25 +90,25 @@ export default function Text() {
 							無聊的兩天過得非常快，為了慶祝我明天就能走出家門了，做完核酸後我便用冰箱準備好的材料準備親自下廚，而弟弟也買來了奶茶。大家都吃得很開心，這個家可能很久都沒有過如此歡聲笑語了吧。
 						</p>
 						<p>
-							深夜，我接到通知，我的核酸檢測出來呈現陽性，而姐弟兩人估計也可能遭殃。{' '}
+							深夜，我接到通知，我的核酸檢測出來呈現陽性，而姐弟兩人估計也可能遭殃。
 						</p>
 						<p>未來不可期，我要去隔離了。</p>
 						<hr></hr>
 						<p>“好的，我盡快回來。”</p>
 						<p>
-							電話的那一頭掛斷後，只留下空蕩的鈴聲。也許我從小就是在外公和外婆的護蔭下長大的，直到升上大學那一年，我選擇了出國，心中最為記掛的也還是西安城裡的兩位老人。而一場疫情，讓回家的路變得無比遙遠。一位老人的身體每況愈下，在和家人的那一通電話之後，讓我堅定了返程的心。{' '}
+							電話的那一頭掛斷後，只留下空蕩的鈴聲。也許我從小就是在外公和外婆的護蔭下長大的，直到升上大學那一年，我選擇了出國，心中最為記掛的也還是西安城裡的兩位老人。而一場疫情，讓回家的路變得無比遙遠。一位老人的身體每況愈下，在和家人的那一通電話之後，讓我堅定了返程的心。
 						</p>
 						<p>
 							長達兩個星期的隔離生活並不好受，心中的焦急在一人的夜晚被無限放大。與家人們再度見面，長輩們都更顯老態，時光是抓不住的沙子吧，我想。小時候，外公外婆總會帶著我坐公交車，去往城市各處。而現在，再次乘上公交車，到人民醫院，變成了未知的空虛，我不知道在醫院裏，我會看到什麼，我需要接受什麼。家人的身體曾經非常硬朗，但老人的健康有時就如同一場讓人措手不及的狂風驟雨，就像是多米諾骨牌一樣一面倒且不見轉機。顧不得那麼多了，疫情？疫情沒有我的家人重要啊！雖然我的理智告訴我，我年輕，也許不會那麼害怕這疫情，我也多次提出讓家裏年齡稍大的長輩們待在家中，避免在醫院中接觸到病毒的可能，但這又怎麼可能呢？一個家庭成員，一個生命，似乎要隨著看不見的時光流走了，大家都想要親自照顧。就這樣，在家與醫院來來回回的時間持續了一陣子，直到八月三十號。
 						</p>
 						<p>
-							這一天的下午，醫生下發了病危通知書，在醫生護士們的搶救下，終究，是沒能從死神的手中拽回生命，生命定格在了晚上八點。但我們也知道，這或許是一種解脫。{' '}
+							這一天的下午，醫生下發了病危通知書，在醫生護士們的搶救下，終究，是沒能從死神的手中拽回生命，生命定格在了晚上八點。但我們也知道，這或許是一種解脫。
 						</p>
 						<p>
 							疫情期間，一切都只能從簡。我和其他家人在第二天買好了喪禮用的花圈和裝飾，殯儀館也已經安排好了。能到場的親友並不多，但也能感覺到口罩下各位都在真切地送別一位朋友，一位親人。漫長的一生，就以三天劃下了句點。
 						</p>
 						<p>
-							一下子生活就顯得多了一處留白，我們也許是泥土的孩子，最後都會回到泥土的懷抱裏。而這時候，我收到了一個通知，我是無癥狀感染者，我要去隔離了。{' '}
+							一下子生活就顯得多了一處留白，我們也許是泥土的孩子，最後都會回到泥土的懷抱裏。而這時候，我收到了一個通知，我是無癥狀感染者，我要去隔離了。
 						</p>
 						<hr></hr>
 						<p>
@@ -124,14 +126,14 @@ export default function Text() {
 							而最近做核酸的次數也越來越頻繁，已經是一天一檢了，但每一次核酸時，鼻腔裡面的異物感依然沒有變化。除此以外，每天的生活或許就只有菜市場和閒暇時間在小區的公園裡面稍微活動一下。相比於別的地方，人都被關在家裡，我們這還能自出自入，實在是不幸中的萬幸。
 						</p>
 						<p>
-							然而昨天收到通知，我確診了，我要去隔離了。只是希望我的老友們，都能安好...{' '}
+							然而昨天收到通知，我確診了，我要去隔離了。只是希望我的老友們，都能安好...
 						</p>
 						<hr></hr>
 						<span className="maps">
 							<ul>
-								{' '}
 								<li>
 									<img
+										data-speed="auto"
 										src={
 											new URL('../assets/img/chengdu.png', import.meta.url).href
 										}
@@ -147,19 +149,19 @@ export default function Text() {
 							今天從員工口中聽到了一個說法：測核酸的隊列裡才是最容易感染的。乍一看荒謬無比，但仔細想像卻讓人內心發寒。即便我怎麼全副武裝，在面對「大白」時還是要脫下口罩，百密一疏。或許這是真的，也或許只是坊間無聊的流言。太多的或許了。
 						</p>
 						<p>
-							可惜我或許不需要再思考這些了，即便我有所準備，即便我萬事做足，我還是感染上病毒，成為了陽性病例，我要去隔離了。{' '}
+							可惜我或許不需要再思考這些了，即便我有所準備，即便我萬事做足，我還是感染上病毒，成為了陽性病例，我要去隔離了。
 						</p>
 						<hr></hr>
 						<span className="maps">
 							<ul>
-								{' '}
 								<li>
 									<img
+										data-speed="auto"
 										src={
 											new URL('../assets/img/chengdu.png', import.meta.url).href
 										}
 										alt=""
-									></img>{' '}
+									></img>
 								</li>
 							</ul>
 						</span>
@@ -173,7 +175,7 @@ export default function Text() {
 							終於，教育局發下了通知，下週就能開學了，而我還在沈浸在放假的慵懶當中，虛虛實實直到暑假作業做不完了才開始覺得精神緊張。我也許能遇上新的同學，還能有新的老師，新的學校，可能全部都是嶄新的。也有可能會是抱著沈重心情，準備面對一年比一年緊張的課業，但我也會因為和朋友們再度面對面談笑而覺得開心。可能這還會是我的最後一年，面對更加不明朗的未來憂心忡忡......
 						</p>
 						<p>
-							虛虛實實，但一通電話把我扯回到了現實，我確診了，我要去隔離了，假期又開始了。{' '}
+							虛虛實實，但一通電話把我扯回到了現實，我確診了，我要去隔離了，假期又開始了。
 						</p>
 						<hr></hr>
 						<p>
@@ -186,9 +188,9 @@ export default function Text() {
 						<hr></hr>
 						<span className="maps">
 							<ul>
-								{' '}
 								<li>
 									<img
+										data-speed="auto"
 										src={
 											new URL('../assets/img/chengdu.png', import.meta.url).href
 										}
@@ -201,7 +203,7 @@ export default function Text() {
 							秋風是一年快要過去的征兆。我這兩日一直在家中待著，並沒有出門的打算。平凡日子，無非就是在家裏找點屬於自己的娛樂，我可能在陽臺上養了一些花草，在客廳裏有一個魚缸，照料著這些與我不同的生命。我或許會在家裏閑暇時打開電視，觀看一部電影，給自己做一頓飯。就這樣過了兩天，外面的世界對於我來說似乎並不具有那麼多的吸引力，我希望把我的平凡日子過好，繼續平凡著，別無所求。就跟你一樣。偶爾我會在吃膩了自己做的飯的時候，想著去外面尋找一些不一樣的食物。“吃什麼呢？水煎包吧。”平凡人的生活樂趣在很多時候是來自於食物的慰藉，踐行我的人欲。疫情三年了，做核酸已經成為了我的日常。這總沒有什麼壞處吧，核酸檢測能讓我遠離得病，能讓我有繼續我的生活的證明。不知道得了這個病是什麼感覺，也許這確實是很危險的疾病，我們都害怕得病。畢竟得病了可能需要去進行很長時間的隔離，我可不能離開家裏，家裏的花草還需要我照顧，無人居住的房子在幾天後就會落灰。
 						</p>
 						<p>
-							買食物之前，我還是先去做一次核酸檢測好了，很久沒有做過了，我也許過幾天需要出遠門，也許有的地方會讓我提供四十八小時核酸陰性證明才會讓我進去，反正我可能需要這個檢測結果。政府在這方面還是做的不錯的，至少我的核酸檢測是免費的。做完了核酸檢測，買到了我想吃的水煎包，是時候回家了。通常我會在二十四小時之內收到我的核酸檢測結果，今天就在家裏放松一下吧，做做家務，在家裏尋找一些屬於自己的樂趣，或許我的生活中還有一些讓我顧慮的事情？我會在夜裏做夢，也許和你一樣，在睡著之前打開手機看看有趣的視頻。也許和你一樣，我並不是那麼容易入睡，會在睡著之前輾轉反則。也許和你一樣，我是一沾枕頭就睡著的人。也許和你一樣，我喜歡和我的家人共度一些家庭時間。{' '}
+							買食物之前，我還是先去做一次核酸檢測好了，很久沒有做過了，我也許過幾天需要出遠門，也許有的地方會讓我提供四十八小時核酸陰性證明才會讓我進去，反正我可能需要這個檢測結果。政府在這方面還是做的不錯的，至少我的核酸檢測是免費的。做完了核酸檢測，買到了我想吃的水煎包，是時候回家了。通常我會在二十四小時之內收到我的核酸檢測結果，今天就在家裏放松一下吧，做做家務，在家裏尋找一些屬於自己的樂趣，或許我的生活中還有一些讓我顧慮的事情？我會在夜裏做夢，也許和你一樣，在睡著之前打開手機看看有趣的視頻。也許和你一樣，我並不是那麼容易入睡，會在睡著之前輾轉反則。也許和你一樣，我是一沾枕頭就睡著的人。也許和你一樣，我喜歡和我的家人共度一些家庭時間。
 						</p>
 						<p>睡著了，夢也許還是一樣的甜美。</p>
 						<p>
@@ -226,9 +228,9 @@ export default function Text() {
 						<hr></hr>
 						<span className="maps">
 							<ul>
-								{' '}
 								<li>
 									<img
+										data-speed="auto"
 										src={
 											new URL('../assets/img/chengdu.png', import.meta.url).href
 										}
@@ -248,7 +250,7 @@ export default function Text() {
 							我在村裏已經住了好多好多年了，鄉下的生活是安樂的，可以遠離大城市的喧囂。我的工作就是在自家的農田裏耕作，你說這是快樂的嗎，還是你覺得我一成不變的生活有點無聊呢？疫情以來，村裏一直要求我們在去做核酸檢測。這幾年來，似乎我的生活被改變了一些？但是似乎又沒有那麼多的改變。我聽見有人說過，核酸檢測就像我們生活中的插曲，也就十分鐘的事！並不非常影響我的生活吧。我通常在早上醒來，和家人吃個早餐，餵我的狗，就迎著朝陽去我自家的農田裏幹活了。你問我這是不是我的父輩傳給我的土地，我不是很確定，但是我確定的是，這是後來分的土地。有一片農田可以進行耕作，想種什麼也許是我的自由吧。我工作到中午，烈日當空的時候，就開始休息，簡單地吃點東西。下午就去村口和我的朋友們見見面，我們或打一下牌，或聊聊天。直到夕陽西下時再慢悠悠地聞著各家開始做飯的味道回家。聽說，好幾千年以來，人們都一直過著日出而作，日落而息的生活。我每天都挺享受晚上的時光的，在村子裏，夜晚特別靜，特別靜，沒有城市裏喧囂的車水馬龍，可能有蟋蟀的叫聲，可能有青蛙的叫聲，可能可以聽見隔壁房子傳來小孩的嬉笑，直到月亮完整地掛在天空的正中間，一切聲音漸漸熄滅，我進入夢鄉。
 						</p>
 						<p>
-							日出而作的我醒了，我收到了一個通知，我是陽性的，我要去隔離了。{' '}
+							日出而作的我醒了，我收到了一個通知，我是陽性的，我要去隔離了。
 						</p>
 						<hr></hr>
 						<p>
@@ -286,13 +288,13 @@ export default function Text() {
 						<hr></hr>
 						<p>
 							哈哈哈，你問我關於我的生活嗎？什麼？你沒有問我，你自己看的？好吧，你也能看到我這一周的生活是什麼安排了，確實有點難以形容呢。我哪裏也沒去，但是我做了四次核酸檢測。我也許只是一個普通的上班族，為數不多的生活樂趣就是每天在晚飯後在家附近散散步。最近可能是公司有要求，也有可能是社區有要求，反正我連續做了四天核酸檢測，在他們告訴我我就要去隔離的時候，我也沒搞清楚我是什麼時候得上這個病的，我不知道，因為我確實沒有任何得病的感覺。你說有沒有可能會是核酸檢測的時候那麼多人聚集造成了我被傳染呢？我是真的不明白呢。反正有可能是我自己散步得的病，也可能是我上班得的病，這都不重要了，反正，我要去隔離了。
-						</p>{' '}
+						</p>
 						<hr></hr>
 						<span className="maps">
 							<ul>
-								{' '}
 								<li>
 									<img
+										data-speed="auto"
 										src={
 											new URL('../assets/img/chengdu.png', import.meta.url).href
 										}
@@ -307,9 +309,9 @@ export default function Text() {
 						<hr></hr>
 						<span className="maps">
 							<ul>
-								{' '}
 								<li>
 									<img
+										data-speed="auto"
 										src={
 											new URL('../assets/img/chengdu.png', import.meta.url).href
 										}
@@ -335,7 +337,7 @@ export default function Text() {
 							匆匆的假期，最後的一天我決定和長輩去拜訪許久沒見的親戚，互相關照總是好的。見到大家一切安好，他也放心了。長輩操勞一生，腰一直不好，而家樓下的中醫診所總能有奇效。難得出門，讓大家盡情享受吧。
 						</p>
 						<p>
-							假期的余韻，約了三五好友，溫泉、公園，玩玩水，重溫草地的味道。{' '}
+							假期的余韻，約了三五好友，溫泉、公園，玩玩水，重溫草地的味道。
 						</p>
 						<p>
 							旁邊的小孩笑得很開心，而這時候，我收到了一個通知，我是無癥狀感染者，
@@ -356,9 +358,9 @@ export default function Text() {
 						<hr></hr>
 						<span className="maps">
 							<ul>
-								{' '}
 								<li>
 									<img
+										data-speed="auto"
 										src={
 											new URL('../assets/img/chengdu.png', import.meta.url).href
 										}
@@ -375,13 +377,13 @@ export default function Text() {
 						</p>
 						<p>
 							我原以為一切都會平靜度過，直到我接到通知，我是陽性，而大姐和二姐也被認為是密切接觸者，大家要去隔離了。
-						</p>{' '}
+						</p>
 						<hr></hr>
 						<span className="maps">
 							<ul>
-								{' '}
 								<li>
 									<img
+										data-speed="auto"
 										src={
 											new URL('../assets/img/chengdu.png', import.meta.url).href
 										}
@@ -397,14 +399,14 @@ export default function Text() {
 							做完核酸檢測以後，我感覺似乎越來越糟，我也許會咳嗽，也許會發燒，在接下來兩天裏他們告訴我要乖乖的待在家裏，哪裏也不要去。我聽說有好多大人都要去隔離，我是不是也要去隔離了呢？我也許沒有你們這些大人那麼在乎隔離，因為爸爸跟我說，去隔離的話就不用去幼兒園了，我可以每天看電視！
 						</p>
 						<p>
-							第二天，爸爸跟我說，我的核酸檢測結果出來了，他跟我說，我要去隔離了。你說我是不是應該開心呢，我可以在接下來好幾周都不用去幼兒園了，可以看我最喜歡看的電視節目。但是，我也有點想念我幼兒園的小夥伴們呢。{' '}
+							第二天，爸爸跟我說，我的核酸檢測結果出來了，他跟我說，我要去隔離了。你說我是不是應該開心呢，我可以在接下來好幾周都不用去幼兒園了，可以看我最喜歡看的電視節目。但是，我也有點想念我幼兒園的小夥伴們呢。
 						</p>
 						<hr></hr>
 						<span className="maps">
 							<ul>
-								{' '}
 								<li>
 									<img
+										data-speed="auto"
 										src={
 											new URL('../assets/img/chengdu.png', import.meta.url).href
 										}
@@ -413,6 +415,7 @@ export default function Text() {
 								</li>
 								<li>
 									<img
+										data-speed="auto"
 										src={
 											new URL('../assets/img/chengdu.png', import.meta.url).href
 										}
@@ -421,6 +424,7 @@ export default function Text() {
 								</li>
 								<li>
 									<img
+										data-speed="auto"
 										src={
 											new URL('../assets/img/chengdu.png', import.meta.url).href
 										}
@@ -450,7 +454,7 @@ export default function Text() {
 						</p>
 						<p>
 							很快上午的課就結束了，而我和朋友們約好，吃完飯以後一起去學校旁邊的文具店買新文具。爸爸也為了讓我好好學習，決定贊助我一百塊，足夠我買文具盒、包書皮和再來一本最新的漫畫書了。文具店裏也進了很多新東西，只是結賬的隊伍真的很長很長，真是等不及了。回家以後，爸爸媽媽和我一起整理了書包，書包小小的，但是卻很重。一點多我又前往了學校，開始了下午的課。下午的課往往都是最困的，感覺連老師也提不起精神。晚上十點，爸爸媽媽帶我一起做了核酸，這一年多以來都是如此，但是我還是很不喜歡被棉簽捅到鼻子，非常不舒服。連續兩天都是這樣過的，時間是不是真的變快了呀？
-						</p>{' '}
+						</p>
 						<p>
 							周末，爸爸媽媽各自帶我去做了一次核酸。但是晚上，媽媽接了一個電話，看起來非常驚慌。凌晨一點就有幾個穿著防護服的人來來敲門，爸爸媽媽和我都被他們一起帶走了。在隔離點我們呆了四天，我很掛念我的書包，我的文具，吵吵鬧鬧的教室。我的身體沒有不舒服，但是今天也測出來我是陽性了，我要去隔離了。
 						</p>
@@ -484,7 +488,7 @@ export default function Text() {
 						</p>
 						<p>
 							說到這裏，你可能已經忘了，也有可能是我沒有告訴你，我們是四十四個個體，四十四個個體在一起跟你說話，四十四個家庭。其實當我了解了其他人在這幾天都去幹了什麼的時候，我還是很難以相信一件事。我們的生活在往不同的方向發展著，確實有一些相交的點，但是大家的生活都太不一樣了，我本以為我們的生活沒有任何的可比性，我本以為我們是我們個人生活的主宰，但是在昨天，我們所有人的生活都暫停了。當我說暫停的時候，就是說，我們四十四個人，都在家裏待著，哪裏都沒去，什麼事情都沒有！我們似乎從昨天開始，所有需要完成的事都消失不見了，你說這是巧合嗎？生活中的瑣事消失得無影無蹤，只剩下一件重要的事。我不知道我是否應該抱怨，我從小接受的教育告訴我，大局為重，你說犧牲我想要做的事情，把我帶去隔離，能拯救我的城市嗎？仔細想想，其實那天我的“同伴”應該算是得到了幸運的待遇，我說的是那天去參加葬禮的那位“同伴”，我有時會想如果那場葬禮再晚個兩天，三天，那位“同伴”還能參加嗎？應該如何告別呢？一個生命的逝去是可以預測的嗎？
-						</p>{' '}
+						</p>
 						<p>
 							熙攘的集市是人民生活美滿、豐富的象征，當每個人都還擁有自己的生活，自己的目的的時候，這一切欣欣向榮的蓬勃似乎永不會停止。我有時候會覺得社會是一台無法停止運轉的巨大機器，或許一往無前，或許能衝破各種障礙。恐怕沒有什麼力量能與這機器停下時的慣性抗衡吧！由我們普通人組成的力量。但是我好奇，我們的生活雖然各不相同，但是真的存在著什麼不同嗎？我的意思是，當那個人去了城東的早餐店，我去了城西的早餐店，似乎我們的生活只有地點的不同，卻都只是為了活下去而奔波勞碌，我不知道怎麼解釋那種陌生又熟悉的感覺。血肉可以築成新的長城，以產生堅不可摧的銅牆鐵壁嗎？還是說，我們隨著洪流，生活的洪流，其實是被改道的河流，滔滔不絕的延綿江水看似勢不可擋，水流，卻是不是，只是在既定路程裏奔向已被規劃好的目的地呢？我不懂啊，我只是個普通人。我有時候覺得我是一片羽毛，他們也都是和我一樣的羽毛，一片羽毛飛向你，沒有任何重量。四十四片羽毛一起飛向你，沒有任何重量。一張同樣是輕飄飄的網，就可以改變羽毛的飛行軌跡，甚至困住羽毛吧。
 						</p>
@@ -494,7 +498,7 @@ export default function Text() {
 						</p>
 						<p>“隔離！”</p>
 						<p>
-							同樣的，我們四十四個人沒有絲毫猶豫，沒有絲毫選擇。也許我們能一起喊出一句話：我要去隔離了。{' '}
+							同樣的，我們四十四個人沒有絲毫猶豫，沒有絲毫選擇。也許我們能一起喊出一句話：我要去隔離了。
 						</p>
 					</div>
 				</div>
@@ -964,7 +968,7 @@ export default function Text() {
 							batteries! If you do it a few more times, the pandemic will be
 							gone! I have two more PCR tests in a row, and this time, I am not
 							lucky. The result is positive, and I'm going to be quarantined.
-						</p>{' '}
+						</p>
 						<hr></hr>
 						<p>
 							I haven't been out of the house for the past few days but for the
@@ -1018,7 +1022,7 @@ export default function Text() {
 						</p>
 						<p>
 							I wake up at sunrise and receive a notice that my PCR test result
-							is positive. I am going to be quarantined.{' '}
+							is positive. I am going to be quarantined.
 						</p>
 						<hr></hr>
 						<p>
@@ -1090,7 +1094,6 @@ export default function Text() {
 							enjoy a moment of leisure?
 						</p>
 						<p>
-							{' '}
 							How is my life going during this pandemic? I don't know. My life
 							is so regular, my health code is always green, and I have no
 							intention of getting a PCR test. I don't think I will get this
@@ -1310,7 +1313,7 @@ export default function Text() {
 							cosmetic counter. According to their saying, the National Day
 							holiday was supposed to be one of the peaks in sales, but now,
 							with only a few guests with the masks on their faces, our counter
-							has been uncrowded for quite a while.{' '}
+							has been uncrowded for quite a while.
 						</p>
 						<p>
 							It's not hard to work, and we can talk together, so we don't feel
