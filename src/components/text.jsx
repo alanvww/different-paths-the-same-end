@@ -11,7 +11,7 @@ export default function Text() {
 	const horizontalPanel = useRef();
 	const content = useRef();
 
-	ScrollTrigger.normalizeScroll(true);
+	//ScrollTrigger.normalizeScroll(true);
 
 	useEffect(() => {
 		const ctx = gsap.context((self) => {
