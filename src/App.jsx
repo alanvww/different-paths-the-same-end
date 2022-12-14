@@ -20,10 +20,9 @@ function App() {
 		setIsActive(true);
 	}, []);
 
-	// 			<AdobeFonts kitId="lkf2tqm" onLoading={onLoading} onActive={onActive} />
-
 	return (
 		<>
+			<AdobeFonts kitId="lkf2tqm" onLoading={onLoading} onActive={onActive} />
 			<div className="first-panel no-select">
 				<Tiles />
 				<span className="title">
