@@ -34,10 +34,10 @@ export default function Text() {
 
 		return () => ctx.revert();
 	}, []);
-
+	/*
 	window.addEventListener('resize', () => {
 		window.location.reload();
-	});
+	}); */
 
 	// English version toggle
 	const [more, setMore] = useState(false);
