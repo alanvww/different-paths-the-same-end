@@ -22,8 +22,7 @@ export default function Text() {
 					trigger: horizontalSlide.current,
 					pin: true,
 					markers: false,
-					anticipatePin: 1,
-					scrub: 1.23,
+					scrub: true,
 					start: 'top top',
 					invalidateOnRefresh: true,
 					immediateRender: false,
@@ -46,11 +45,9 @@ export default function Text() {
 		setMore(!more);
 	};
 
-	const getImageUrl = (name) => {
-		let url = new URL(`./src/assets/img/${name}.png`, import.meta.url).href;
-		console.log(1 + url);
-		return url;
-	};
+	function getImageUrl(name) {
+		return new URL(`../assets/img/${name}.webp`, import.meta.url).href;
+	}
 
 	return (
 		<>
@@ -70,6 +67,7 @@ export default function Text() {
 						<p>⋯⋯</p>
 						<p>三天不多不少。</p>
 						<p>我接到通知，我的核酸檢測出來呈現陽性，我要被隔離了。</p>
+
 						<hr></hr>
 						<p>女士們先生們，列車前方停車站湛江西站，請您提前做好下車準備。 </p>
 						<p>
@@ -88,6 +86,7 @@ export default function Text() {
 							深夜，我接到通知，我的核酸檢測出來呈現陽性，而姐弟兩人估計也可能遭殃。
 						</p>
 						<p>未來不可期，我要去隔離了。</p>
+
 						<hr></hr>
 						<p>“好的，我盡快回來。”</p>
 						<p>
@@ -105,6 +104,26 @@ export default function Text() {
 						<p>
 							一下子生活就顯得多了一處留白，我們也許是泥土的孩子，最後都會回到泥土的懷抱裏。而這時候，我收到了一個通知，我是無癥狀感染者，我要去隔離了。
 						</p>
+						<div className="imageContainerVert">
+							<div className="imageBoxVert">
+								<span>成都</span>
+								<img
+									src={getImageUrl('chengdu')}
+									alt="Map of Chengdu with red dots"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>湛江</span>
+								<img
+									src={getImageUrl('zhanjiang')}
+									alt="Map of Zhanjiang"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>西安</span>
+								<img src={getImageUrl('xian')} alt="Map of Xi An"></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
 						<p>
 							退休生活也許是過於清閒了，尤其是在這疫情開始以後。我每天都會準時在早上八點前往家附近的菜市場，往常這裡都是人聲鼎沸：賣早餐的流動攤販，匆忙的上班族，忙著進貨的攤主，討價還價的攻防......這也是一天裡面能買到最新鮮的菜和肉的時候。隨著疫情開始，這些聲浪漸漸被掩蓋在口罩底下，連昔日的吆喝都仿彿小聲了些。大家都越來越謹慎，甚至是害怕與人面對面，生怕自己就成為密切接觸者，甚至感染上病毒。人潮也不如曾經那般，封閉式管理的小區，一定要使用智能手機才能調出的健康碼，老主顧們突破重重困難才能重聚這個小小的菜市場。
@@ -124,19 +143,7 @@ export default function Text() {
 							然而昨天收到通知，我確診了，我要去隔離了。只是希望我的老友們，都能安好...
 						</p>
 						<hr></hr>
-						<span className="maps">
-							<ul>
-								<li>
-									<img
-										data-speed="auto"
-										src={
-											new URL('../assets/img/chengdu.png', import.meta.url).href
-										}
-										alt=""
-									></img>
-								</li>
-							</ul>
-						</span>
+
 						<p>
 							疫情發展至今，我一直相信只要保護措施做好，病毒就感染不上我。手套，口罩，隨時的酒精消毒，已經是標準的配備了。為了生計，工作自然是不能夠停下，唯一能讓心裡舒服點的就是這些保護，無論對家人還是員工都是。農貿市場雖然不是人頭湧動，但明顯也稍有起色。和老闆商量好，給我店裏準備好新鮮的食材明天送到，一如既往，我的信條就是有準備就能應對各種情況，做菜是如此，疫情亦然。
 						</p>
@@ -146,20 +153,30 @@ export default function Text() {
 						<p>
 							可惜我或許不需要再思考這些了，即便我有所準備，即便我萬事做足，我還是感染上病毒，成為了陽性病例，我要去隔離了。
 						</p>
+						<div className="imageContainerVert">
+							<div className="imageBoxVert">
+								<span>瀘州 #1</span>
+								<img
+									src={getImageUrl('luzhou_1')}
+									alt="Map of Lu Zhou #1"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#2</span>
+								<img
+									src={getImageUrl('luzhou_2')}
+									alt="Map of Lu Zhou #2"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#3</span>
+								<img
+									src={getImageUrl('luzhou_3')}
+									alt="Map of Lu Zhou #3"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
-						<span className="maps">
-							<ul>
-								<li>
-									<img
-										data-speed="auto"
-										src={
-											new URL('../assets/img/chengdu.png', import.meta.url).href
-										}
-										alt=""
-									></img>
-								</li>
-							</ul>
-						</span>
 						<p>
 							暑假馬上要結束了，可由於疫情，開學時間來來回回地更動。可能沒有人在乎這個，甚至有人會因此竊喜。在家的日子，電視，手機，電腦，這三件套充盈了我的生活，儘管我所在的小區沒有被封禁，然而不時發現的陽性病例還是讓我和我的家人減少了出門次數。在家能和朋友們打打遊戲，聊聊天，但也好久沒有和他們一起去打球了。或許我會非常期待新學校，也或許會為假期的結束而感到懊惱，還有動都沒動過的暑假作業。還是不要思考那麼多比較好，這還不如來兩把遊戲呢！
 						</p>
@@ -180,20 +197,24 @@ export default function Text() {
 							很多時候我都在想，這樣子的生活才是大家想要的。大口吃肉，大口喝酒，食客們吃得開心，我們掙錢也掙得開心。無論網絡如何發達，如何便利，就是沒有辦法取代三五知己一起在飯桌上舉杯的快樂。大家脫下口罩，一起呼吸新鮮的空氣，感受食物的香氣，什麼時候才能回到這種生活呢？
 						</p>
 						<p>只能說，還不是現在，我被通知確診了，我要去隔離了。</p>
+						<div className="imageContainerVert">
+							<div className="imageBoxVert">
+								<span>#4</span>
+								<img
+									src={getImageUrl('luzhou_4')}
+									alt="Map of Lu Zhou #4"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#5</span>
+								<img
+									src={getImageUrl('luzhou_5')}
+									alt="Map of Lu Zhou #5"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
-						<span className="maps">
-							<ul>
-								<li>
-									<img
-										data-speed="auto"
-										src={
-											new URL('../assets/img/chengdu.png', import.meta.url).href
-										}
-										alt=""
-									></img>
-								</li>
-							</ul>
-						</span>
+
 						<p>
 							秋風是一年快要過去的征兆。我這兩日一直在家中待著，並沒有出門的打算。平凡日子，無非就是在家裏找點屬於自己的娛樂，我可能在陽臺上養了一些花草，在客廳裏有一個魚缸，照料著這些與我不同的生命。我或許會在家裏閑暇時打開電視，觀看一部電影，給自己做一頓飯。就這樣過了兩天，外面的世界對於我來說似乎並不具有那麼多的吸引力，我希望把我的平凡日子過好，繼續平凡著，別無所求。就跟你一樣。偶爾我會在吃膩了自己做的飯的時候，想著去外面尋找一些不一樣的食物。“吃什麼呢？水煎包吧。”平凡人的生活樂趣在很多時候是來自於食物的慰藉，踐行我的人欲。疫情三年了，做核酸已經成為了我的日常。這總沒有什麼壞處吧，核酸檢測能讓我遠離得病，能讓我有繼續我的生活的證明。不知道得了這個病是什麼感覺，也許這確實是很危險的疾病，我們都害怕得病。畢竟得病了可能需要去進行很長時間的隔離，我可不能離開家裏，家裏的花草還需要我照顧，無人居住的房子在幾天後就會落灰。
 						</p>
@@ -221,19 +242,6 @@ export default function Text() {
 							核酸檢測似乎只是我生活中的插曲，我們村裏有很多電動自行車，每天都在安靜地運行著，跟隨著駕駛員，或去這，或去那。快沒電的時候，電動車就要在家裏充電，偶爾的充電，並不影響電動車的使用，路上偶爾有一個小坑，電動車也能很輕易地通過。似乎這些都是電動車穩定運行的插曲，只有伴隨著這些插曲，電動車的運行才能流暢且不間斷。核酸檢測就當是給我充電了吧！大家多做幾次核酸，疫情就會沒有啦！又連續地再做了兩次的核酸檢測，這一次，我似乎沒有那麼幸運了，我是陽性的，我要去隔離了。
 						</p>
 						<hr></hr>
-						<span className="maps">
-							<ul>
-								<li>
-									<img
-										data-speed="auto"
-										src={
-											new URL('../assets/img/chengdu.png', import.meta.url).href
-										}
-										alt=""
-									></img>
-								</li>
-							</ul>
-						</span>
 						<p>
 							我這幾天都沒出門，我只為了核酸檢測而出過門。我在過去的兩天裡都堅持去做核酸檢測了，而今天我是第三次。我在中午回來以後，在家裏吃個簡單的午飯，在下午的時候，我的家人叫我去把家裏的垃圾丟一下，我們這裏的垃圾場在村子的最邊緣，所以每次過去都要走一小段路。我其實挺喜歡走去垃圾場的這段路的，我能在這路上看看風景散散心，和村裏認識的鄰居打一下招呼。雖然有的時候有人會跟我說，我們村應該改一改垃圾場的位置，或者收垃圾的方式，因為當我下午走過去的時候可能還好，但是晚上，尤其是冬天晚上，走過去是真的有點黑，有點冷呢。明天我應該在家裏休息一下，已經連續做了三天的核酸檢測了，我感覺應該不會有什麼問題了，終於有一天是不用進行核酸檢測的了。我應該幹點什麼好呢？
 						</p>
@@ -247,7 +255,24 @@ export default function Text() {
 						<p>
 							日出而作的我醒了，我收到了一個通知，我是陽性的，我要去隔離了。
 						</p>
+						<div className="imageContainerVert">
+							<div className="imageBoxVert">
+								<span>瑞麗 #1</span>
+								<img
+									src={getImageUrl('ruili_1')}
+									alt="Map of Rui Li #1"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#2</span>
+								<img
+									src={getImageUrl('ruili_2')}
+									alt="Map of Rui Li #2"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
+
 						<p>
 							我住在小鎮上一家珠寶公司裏，我可能是這裏的員工，你猜呢？我在從學校畢業以後，就開始在珠寶公司工作，我家住在不近的地方，為了節省我每天上班的通勤時間，我選擇住在公司裏。其實作為一個珠寶公司，每天晚上有人留守也能保證庫存的安全，在很多時候，我都選擇在公司裏上夜班，在上班的同時，我又可以尋得一個供我夜間休憩的地方。我雖然在生活中的大部分時候都居住在珠寶公司，但是我每天還是會有不同的地方需要我去。例如今天，我正準備去家附近拜訪原本和我是來自於同一個村莊的朋友。我也算是剛好得到回家看看的機會吧。工作，讓我獲得工資，工資，讓我養活我自己和我的家人。偶爾還是要回家看看。我在村裏待到凌晨才開始慢慢地回去珠寶公司，不知道從什麼時候開始，珠寶公司已經成為了我生活中很重要的一個地方，一個休息的地方，一個工作的地方。我在珠寶公司待到第二天的下午，然後再去一下村裏。這個村莊是我長大的地方，我的生活似乎被分割成了兩個部分，工作和居住是一個部分，娛樂和放松是另一個部分。在兩個地方過著兩種不同的生活。你說我的生活快樂嗎？我有時候會覺得我的生活是美好的，也有的時候我直視生活的平凡。今天也是與昨天一樣，我凌晨從村裏開始回去公司，打算在公司度過我的夜晚。對了，我忘了告訴你了，我很喜歡在回到公司之前去外面買一份吃的，我似乎不太在意夜宵是否是一個健康的選擇，今天晚上，我選擇吃一份鍋貼。
 						</p>
@@ -267,6 +292,22 @@ export default function Text() {
 						<p>
 							我每天都要去學校，去我們城市裏的初中，你問我我是去上班還是去上學？我不知道，但這有實際上的分別嗎？我們去的地點都是類似的，我們的每日軌跡都是類似的。我每個工作日在起床以後就去學校，直到放學。放學後的生活，無非就是直接回家，或者在回家的路上買些小吃，在便利店買些飲料或者日用品。直到第二天再去學校。還是跟往常一樣去上學，今天學校裏發生的事情可能也發生在過你的身上。我放學後回到村莊裏，去了親戚家吃晚飯。明天按照計劃來說，應該又是繼續去學校的日子。但是當我起床的時候，他們說我前天去過的小吃店，有一位陽性患者去過，所以我作為密切接觸者，我也應該去隔離。看來要暫別我的學校了，暫別我的規律生活了。我得到了一個不知道期限的假期，你說我應該開心嗎？我在回想著，那天我是否應該去那個小吃店，如果沒有去呢？不知道呢，反正現在，我要去隔離了。
 						</p>
+						<div className="imageContainerVert">
+							<div className="imageBoxVert">
+								<span>#3</span>
+								<img
+									src={getImageUrl('ruili_3')}
+									alt="Map of Rui Li #3"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#4</span>
+								<img
+									src={getImageUrl('ruili_4')}
+									alt="Map of Rui Li #4"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
 						<p>
 							最近的疫情是如此反復，我早已聽說了很多人又重新開始得病了。我不知道我會不會是下一個，如果我是下一個的話，我會遇見什麼呢？我們產生的交集，是以一種什麼樣的方式產生的，我們去過相同的地方嗎？我們擁有類似的生活嗎？不知道呢。在這個周末，我覺得我應該為家裏買點東西，所以我去了隔壁村的百貨商店，周末出門逛逛總是我們最熟悉，最輕松，最多人選擇的放松方式，畢竟不但可以去看看需要的商品，還可以享受一下美食。我知道在百貨商店附近，有一家非常不錯的小吃店，我經常光顧這家店，首先是因為他們家做的東西味道確實很好，價格也非常實惠，並且離我家也不算太遠。我最近似乎感覺有點不舒服，但是我並不覺得我得了現在正在流行的那種病，畢竟我一點相關的癥狀都沒有呢？可能是慢性病吧，我在下午的時候要去我們市裏的醫院看看，找醫生拿個處方，去藥店抓點藥也許能讓我好受一點。自疫情開始以後，身體只要有點不舒服我便會覺得有一些害怕，害怕自己得病，害怕自己被隔離。回家前，我還是選擇在外面隨便吃一些好了。晚上的閑暇時光與他人別無二致，無非就是在家裏放松一下，你問我有沒有夜間的娛樂生活？我可能有過，但是我最近沒有，也許我需要一些快樂的活動，也許平淡的普通生活就能讓我得到滿足。
@@ -285,36 +326,35 @@ export default function Text() {
 							哈哈哈，你問我關於我的生活嗎？什麼？你沒有問我，你自己看的？好吧，你也能看到我這一周的生活是什麼安排了，確實有點難以形容呢。我哪裏也沒去，但是我做了四次核酸檢測。我也許只是一個普通的上班族，為數不多的生活樂趣就是每天在晚飯後在家附近散散步。最近可能是公司有要求，也有可能是社區有要求，反正我連續做了四天核酸檢測，在他們告訴我我就要去隔離的時候，我也沒搞清楚我是什麼時候得上這個病的，我不知道，因為我確實沒有任何得病的感覺。你說有沒有可能會是核酸檢測的時候那麼多人聚集造成了我被傳染呢？我是真的不明白呢。反正有可能是我自己散步得的病，也可能是我上班得的病，這都不重要了，反正，我要去隔離了。
 						</p>
 						<hr></hr>
-						<span className="maps">
-							<ul>
-								<li>
-									<img
-										data-speed="auto"
-										src={
-											new URL('../assets/img/chengdu.png', import.meta.url).href
-										}
-										alt=""
-									></img>
-								</li>
-							</ul>
-						</span>
+
 						<p>
 							我是一個普通的上班族，我的工作是一名珠寶銷售員，疫情以來，我們店鋪的生意確實受到了一些影響，但是我還是得每天堅持去上班，包括周末。其實這也不奇怪，通常來說周末來購買東西的人更多，店裏更忙。你問我生活有什麼特別的嗎，我想大概是沒有的，每天都是上班，回家，兩點一線的生活。真要說有什麼獨特的，就是疫情開始以後，有時需要在回家之前去做一下核酸檢測。我已經這樣堅持三年了，我有時候會覺得我是幸運的。因為這三年來，我看過太多的店鋪倒閉，太多的人失去工作。或許我確實是幸運的，天知道我這些年來到底做了多少次核酸檢測，但是我堅持三年了，我從來沒有成為不幸的人，我從來沒有得過這個病。今天還是在回家之前做一下核酸檢測，順便去商場買點東西，也是順便想看看商場裏的珠寶，這是我為數不多的興趣之一了。沒有特別的生活，沒有特別的晚飯，我在睡下前，也許會想著，明天還是一樣的循環。但是當我醒來的時候，就有人通知我，叫我待在家裏不要動，有人會來接我去隔離。盡管我沒有任何的感覺，但是我大概還是得了這個病了。行吧，三年了，我夠幸運了，現在，我要去隔離了。
 						</p>
+						<div className="imageContainerVert">
+							<div className="imageBoxVert">
+								<span>#5</span>
+								<img
+									src={getImageUrl('ruili_5')}
+									alt="Map of Rui Li #5"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#6</span>
+								<img
+									src={getImageUrl('ruili_6')}
+									alt="Map of Rui Li #6"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#7</span>
+								<img
+									src={getImageUrl('ruili_7')}
+									alt="Map of Rui Li #7"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
-						<span className="maps">
-							<ul>
-								<li>
-									<img
-										data-speed="auto"
-										src={
-											new URL('../assets/img/chengdu.png', import.meta.url).href
-										}
-										alt=""
-									></img>
-								</li>
-							</ul>
-						</span>
+
 						<p>
 							又是一年國慶節，也和這兩年來一樣，這個假期我沒有選擇外出，今年甚至都沒有想要出門和朋友吃飯喝酒的沖動了。我只想享受一刻的清淨，一刻不需要被體溫槍命中額頭，一刻耳朵上不用掛著這薄弱而又關鍵的防護。開開心心地屯糧，無止境地煲劇，隨心所欲地入睡，簡直是個完美的假期。
 						</p>
@@ -351,19 +391,6 @@ export default function Text() {
 						</p>
 						<p>半夜，電話裏說我確診了，我要去隔離了。</p>
 						<hr></hr>
-						<span className="maps">
-							<ul>
-								<li>
-									<img
-										data-speed="auto"
-										src={
-											new URL('../assets/img/chengdu.png', import.meta.url).href
-										}
-										alt=""
-									></img>
-								</li>
-							</ul>
-						</span>
 						<p>
 							商場裏的人完全不像以前那樣多了”這一年多以來已經聽大姐說這句話不下數十次了。這能有什麼辦法，人們都習慣被困在家裏了！“過段時間就會好啦，人不是越來越多了嗎？”二姐也總會有一樣的回答。大姐家裏可能有一個剛上小學的小孩，而二姐可能剛剛結婚，我則可能剛從大專畢業。為了生計，相聚於這個化妝品櫃臺。據大姐說，國慶假期原本應該是銷售的小高峰，然而現在不多不少的人流，再加上人人臉上的口罩，我們櫃臺已經好一段時間沒人光顧了。
 						</p>
@@ -373,20 +400,44 @@ export default function Text() {
 						<p>
 							我原以為一切都會平靜度過，直到我接到通知，我是陽性，而大姐和二姐也被認為是密切接觸者，大家要去隔離了。
 						</p>
+						<div className="imageContainerVert">
+							<div className="imageBoxVert">
+								<span>重慶 #1</span>
+								<img
+									src={getImageUrl('chongqing_1')}
+									alt="Map of Chongqing #1"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#2</span>
+								<img
+									src={getImageUrl('chongqing_2')}
+									alt="Map of Chongqing #2"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#3</span>
+								<img
+									src={getImageUrl('chongqing_3')}
+									alt="Map of Chongqing #3"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#4</span>
+								<img
+									src={getImageUrl('chongqing_4')}
+									alt="Map of Chongqing #4"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#5</span>
+								<img
+									src={getImageUrl('chongqing_5')}
+									alt="Map of Chongqing #5"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
-						<span className="maps">
-							<ul>
-								<li>
-									<img
-										data-speed="auto"
-										src={
-											new URL('../assets/img/chengdu.png', import.meta.url).href
-										}
-										alt=""
-									></img>
-								</li>
-							</ul>
-						</span>
 						<p>
 							學校的老師告訴我們呀，要多洗手，注意衛生。我不知道你是否很難想象這個疫情占了我目前人生的多大部分，因為我比你小得多。你還記得你上幼兒園的時候嗎？那也許是好多好多年前的事情，我想的可沒有你們這些成年人那麼多！我們或許會在幼兒園學唱關於疫情的兒歌，老師也許會告訴我們穿著防護服的都是英雄，偉大的英雄！你在小時候是否也會以偉大的英雄為榜樣呢？其實幼兒園的生活也沒有成年人想象的輕松啦，父母把我們送到幼兒園去，是為了讓他們在上班的時候有人照看我們吧。今天還是跟往常一樣，一個普通的星期四，我還是要去幼兒園上學。我或許不舍得離開家裏，我或許期待著見到我的小夥伴們。但是我今天感覺有點不舒服呢。我跟爸爸在家樓下吃過早點，爸爸就帶我去幼兒園了。我見到了老師，老師發現了我不太舒服，便讓我爸爸來接我回家。老師也很緊張，很怕我是一個陽性病例吧。我跟爸爸回到家以後，感覺一會好一會差的，在家裏待了一會以後，似乎又沒那麼難受了。大家說我這種癥狀可能是因為早上吃壞肚子了？我也不懂啦！我下午又回到了幼兒園，直到爸爸下班才能來接我。到晚上，我似乎感覺更加糟糕了，爸爸認為我是感冒，但是他說，為了安全起見，還是去附近的核酸檢測點做一下核酸檢測吧。晚上十點了，我很想睡覺，可是爸爸還是帶我去做核酸檢測了。
 						</p>
@@ -397,37 +448,6 @@ export default function Text() {
 							第二天，爸爸跟我說，我的核酸檢測結果出來了，他跟我說，我要去隔離了。你說我是不是應該開心呢，我可以在接下來好幾周都不用去幼兒園了，可以看我最喜歡看的電視節目。但是，我也有點想念我幼兒園的小夥伴們呢。
 						</p>
 						<hr></hr>
-						<span className="maps">
-							<ul>
-								<li>
-									<img
-										data-speed="auto"
-										src={
-											new URL('../assets/img/chengdu.png', import.meta.url).href
-										}
-										alt=""
-									></img>
-								</li>
-								<li>
-									<img
-										data-speed="auto"
-										src={
-											new URL('../assets/img/chengdu.png', import.meta.url).href
-										}
-										alt=""
-									></img>
-								</li>
-								<li>
-									<img
-										data-speed="auto"
-										src={
-											new URL('../assets/img/chengdu.png', import.meta.url).href
-										}
-										alt=""
-									></img>
-								</li>
-							</ul>
-						</span>
 						<p>
 							我是一名衛生紙銷售員，在超市上班。我的生活沒有什麼特別的，跟我身邊的大部分人都一樣。在我們超市，每天都有三批人進行輪換，我有時候上早班，有時候上晚班。我每天工作八個小時，生活還算規律，我的工作內容對你來說也許也不算太難。我今天下午六點下班以後，就開始走路回家，有時候我也許也會感嘆這個城市的繁華，看著下班時在歸家路途中行色匆匆的人們，我也許也會跟你一樣，好奇每個人的生活。我回家的時候經常會偶遇我的鄰居，我們每次都會友好地聊會天，分享一下我們的一天，我友好的鄰居有時候也會在我生活中遇到困難的時候幫助我，你說我應該為這有鄰裏互相照應的生活感到滿足嗎？吃一頓簡單的晚餐，結束普通卻應該使我滿足的一天。
 						</p>
@@ -465,6 +485,36 @@ export default function Text() {
 						<p>
 							我家附近有一個公園，是為了紀念當年地震的遇難者而建的。我有時候會去那個公園走走，也許是這個公園與我個人的經歷有關，也許只是希望有一個喘息的地方。人到中年，壓力也許是比年輕時大一些吧。我在公園兜兜轉轉，不知不覺就有可能沈浸在這環境之中。有時我在這個公園裏，走著，看著，思考著，幾個小時就這麼過去了。從夕陽西下，到華燈初上，我才慢慢回家。回到家裏，溫馨的家，是結束一天的好地方。當我醒來的時候，生活似乎出現了一些波折，我們一家都是密切接觸者，沒辦法呢，全家一起去做核酸。後面幾天也不能出門了，直到確認我們沒有感染的風險才行。隔離對我來說意味著什麼？我不能上班了，我妻子也不能上班了，我的孩子不能上學了，我媽媽也不能做她想做的事情了。我們全家的生活都得暫停一下吧。你問我害怕嗎？說實話，也許是有點怕的，但是又有什麼辦法呢？大局為重吧。跟當年地震的時候一樣，可能我們身邊並不缺少英雄，集中力量辦大事嘛。這次核酸檢測，我大概也能猜到結果，我是陽性的，我要去隔離了。
 						</p>
+						<div className="imageContainerVert">
+							<div className="imageBoxVert">
+								<span>隴南 #1</span>
+								<img
+									src={getImageUrl('longnan_1')}
+									alt="Map of Longnan #1"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#2</span>
+								<img
+									src={getImageUrl('longnan_2')}
+									alt="Map of Longnan #2"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#3</span>
+								<img
+									src={getImageUrl('longnan_3')}
+									alt="Map of Longnan #3"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#4</span>
+								<img
+									src={getImageUrl('longnan_4')}
+									alt="Map of Longnan #4"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
 						<p>
 							每一個在城市中的個體像是一粒沙，本來我們都是單獨的存在。你可以說，沒有一粒沙是一樣的，你也可以說沒有一片雪花是一樣的。我們的生活各不相同，卻可能在某些地方相似。你從海邊小心地拾起兩粒沙，在放大鏡下仔細觀察，你發現，似乎從某些角度觀看，這兩粒沙有幾分相似。也許是材質，也許是被風化的棱角。不知道你有沒有在某一時刻，懷疑這兩粒沙在數萬年前是一粒沙，只是不知道後來有什麼原因，將它們一分為二。所有的沙也許本來都是一粒沙，不知道什麼原因，天知道它們被分成多少個的獨立個體，也許本來這個世界上沒有沙。我們的生活各不相同，但也許是命運的安排，繁複的可能性中會產生重疊的軌跡，卻是因為少數的重疊，讓彼此獨立、單獨的殊途，一同遞歸到那唯一的目的地。
@@ -495,6 +545,43 @@ export default function Text() {
 						<p>
 							同樣的，我們四十四個人沒有絲毫猶豫，沒有絲毫選擇。也許我們能一起喊出一句話：我要去隔離了。
 						</p>
+						<div className="imageContainerVert">
+							<div className="imageBoxVert">
+								<span>黑河 #1</span>
+								<img
+									src={getImageUrl('heihe_1')}
+									alt="Map of Heihe #1"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#2</span>
+								<img
+									src={getImageUrl('heihe_2')}
+									alt="Map of Heihe #2"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#3</span>
+								<img
+									src={getImageUrl('heihe_3')}
+									alt="Map of Heihe #3"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#4</span>
+								<img
+									src={getImageUrl('heihe_4')}
+									alt="Map of Heihe #4"
+								></img>{' '}
+							</div>
+							<div className="imageBoxVert">
+								<span>#5</span>
+								<img
+									src={getImageUrl('heihe_5')}
+									alt="Map of Heihe #5"
+								></img>{' '}
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -668,6 +755,26 @@ export default function Text() {
 							soil's embrace in the end. And at this time, I received a notice
 							that I am asymptomatic positive, and I am going to be quarantined.
 						</p>
+						<div className="imageContainer">
+							<div className="imageBox">
+								<span>Cheng Du</span>
+								<img
+									src={getImageUrl('chengdu')}
+									alt="Map of Chengdu with red dots"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>Zhan Jiang</span>
+								<img
+									src={getImageUrl('zhanjiang')}
+									alt="Map of Zhanjiang"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>Xi An</span>
+								<img src={getImageUrl('xian')} alt="Map of Xi An"></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
 						<p>
 							Retirement is a leisurely life, especially since the pandemic
@@ -758,6 +865,29 @@ export default function Text() {
 							I'm still infected with the virus, I'm positive, and I'm going to
 							be quarantined.
 						</p>
+						<div className="imageContainer">
+							<div className="imageBox">
+								<span>Lu Zhou #1</span>
+								<img
+									src={getImageUrl('luzhou_1')}
+									alt="Map of Lu Zhou #1"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#2</span>
+								<img
+									src={getImageUrl('luzhou_2')}
+									alt="Map of Lu Zhou #2"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#3</span>
+								<img
+									src={getImageUrl('luzhou_3')}
+									alt="Map of Lu Zhou #3"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
 						<p>
 							Summer is almost over, but because of the pandemic, the school
@@ -831,6 +961,22 @@ export default function Text() {
 							Let's just say, not right now. I've been notified that my PCR test
 							result is positive, and I'm going to be quarantined.
 						</p>
+						<div className="imageContainer">
+							<div className="imageBox">
+								<span>#4</span>
+								<img
+									src={getImageUrl('luzhou_4')}
+									alt="Map of Lu Zhou #4"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#5</span>
+								<img
+									src={getImageUrl('luzhou_5')}
+									alt="Map of Lu Zhou #5"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
 						<p>
 							The autumn breeze is a sign that the year is almost over. I have
@@ -1019,6 +1165,22 @@ export default function Text() {
 							I wake up at sunrise and receive a notice that my PCR test result
 							is positive. I am going to be quarantined.
 						</p>
+						<div className="imageContainer">
+							<div className="imageBox">
+								<span>Rui Li #1</span>
+								<img
+									src={getImageUrl('ruili_1')}
+									alt="Map of Rui Li #1"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#2</span>
+								<img
+									src={getImageUrl('ruili_2')}
+									alt="Map of Rui Li #2"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
 						<p>
 							I live in a jewelry company in a small town where I may be an
@@ -1127,6 +1289,22 @@ export default function Text() {
 							snack bar that day. I don't know, but for now, I am going to be
 							quarantined.
 						</p>
+						<div className="imageContainer">
+							<div className="imageBox">
+								<span>#3</span>
+								<img
+									src={getImageUrl('ruili_3')}
+									alt="Map of Rui Li #3"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#4</span>
+								<img
+									src={getImageUrl('ruili_4')}
+									alt="Map of Rui Li #4"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
 						<p>
 							The recent pandemic has been repetitive, and I've heard so much
@@ -1225,6 +1403,29 @@ export default function Text() {
 							I've been lucky enough for three years, so it's time for me to be
 							quarantined.
 						</p>
+						<div className="imageContainer">
+							<div className="imageBox">
+								<span>#5</span>
+								<img
+									src={getImageUrl('ruili_5')}
+									alt="Map of Rui Li #5"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#6</span>
+								<img
+									src={getImageUrl('ruili_6')}
+									alt="Map of Rui Li #6"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#7</span>
+								<img
+									src={getImageUrl('ruili_7')}
+									alt="Map of Rui Li #7"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
 						<p>
 							It is another National Day, and like the past two years, I don't
@@ -1324,6 +1525,43 @@ export default function Text() {
 							also considered close contacts. As a result, we are all going to
 							be quarantined.
 						</p>
+						<div className="imageContainer">
+							<div className="imageBox">
+								<span>Chong Qing #1</span>
+								<img
+									src={getImageUrl('chongqing_1')}
+									alt="Map of Chongqing #1"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#2</span>
+								<img
+									src={getImageUrl('chongqing_2')}
+									alt="Map of Chongqing #2"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#3</span>
+								<img
+									src={getImageUrl('chongqing_3')}
+									alt="Map of Chongqing #3"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#4</span>
+								<img
+									src={getImageUrl('chongqing_4')}
+									alt="Map of Chongqing #4"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#5</span>
+								<img
+									src={getImageUrl('chongqing_5')}
+									alt="Map of Chongqing #5"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
 						<p>
 							The teachers from our kindergarten told us that we should wash our
@@ -1578,6 +1816,36 @@ export default function Text() {
 							am going to be quarantined, my whole family will all have to go to
 							quarantine. I can't do anything about it.
 						</p>
+						<div className="imageContainer">
+							<div className="imageBox">
+								<span>Long Nan #1</span>
+								<img
+									src={getImageUrl('longnan_1')}
+									alt="Map of Longnan #1"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#2</span>
+								<img
+									src={getImageUrl('longnan_2')}
+									alt="Map of Longnan #2"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#3</span>
+								<img
+									src={getImageUrl('longnan_3')}
+									alt="Map of Longnan #3"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#4</span>
+								<img
+									src={getImageUrl('longnan_4')}
+									alt="Map of Longnan #4"
+								></img>{' '}
+							</div>
+						</div>
 						<hr></hr>
 						<p>
 							Each individual in the city is like a grain of sand, we all exist
@@ -1706,6 +1974,43 @@ export default function Text() {
 							the slightest choice. Perhaps we can all shout out the same phrase
 							together: I'm going to be quarantined.
 						</p>
+						<div className="imageContainer">
+							<div className="imageBox">
+								<span>Hei He #1</span>
+								<img
+									src={getImageUrl('heihe_1')}
+									alt="Map of Heihe #1"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#2</span>
+								<img
+									src={getImageUrl('heihe_2')}
+									alt="Map of Heihe #2"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#3</span>
+								<img
+									src={getImageUrl('heihe_3')}
+									alt="Map of Heihe #3"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#4</span>
+								<img
+									src={getImageUrl('heihe_4')}
+									alt="Map of Heihe #4"
+								></img>{' '}
+							</div>
+							<div className="imageBox">
+								<span>#5</span>
+								<img
+									src={getImageUrl('heihe_5')}
+									alt="Map of Heihe #5"
+								></img>{' '}
+							</div>
+						</div>
 					</div>
 				)}
 			</div>

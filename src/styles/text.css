@@ -1,29 +1,88 @@
 /* Image Style */
 
-ul {
-	overflow: hidden;
+.imageContainer {
+	display: flex;
+	width: 100%;
+	padding: 4% 2%;
+	box-sizing: border-box;
+	height: 100vh;
 }
 
-li {
+.imageBox {
+	flex: 1;
+	overflow: hidden;
+	transition: 0.5s;
+	margin: 0 2%;
+	box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+	line-height: 0;
+}
+
+.imageBox > img {
+	width: 200%;
+	height: calc(100%);
+	object-fit: cover;
+	transition: 0.5s;
+}
+
+.imageBox > span {
+	font-size: 0rem;
+	height: 1vh;
+	line-height: 2;
+}
+
+.imageBox:hover {
+	flex: 1 0 50%;
+}
+.imageBox:hover > img {
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
 }
 
-img {
-	margin: 5%;
-	max-width: 80%;
-	max-height: 80%;
-	animation: blr 2s;
-	filter: blur(5px);
-	clip-path: inset(20% 20% round 20px);
-	transition: 0.8s;
-	overflow: hidden;
+.imageBox:hover > span {
+	font-size: 1.5rem;
 }
 
-img:hover {
-	filter: blur(0);
-	clip-path: inset(0% 0% round 0px);
+.imageContainerVert {
+	display: flex;
+	flex-direction: row;
+	box-sizing: border-box;
+	max-height: 200%;
+	max-width: 200%;
+}
+
+.imageBoxVert {
+	flex: 1 1;
+	overflow: hidden;
+	transition: 0.5s;
+	margin: 1% 2%;
+	box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+	line-height: 0;
+}
+
+.imageBoxVert > img {
+	width: 200%;
+	height: calc(100%);
+	object-fit: cover;
+	transition: 0.5s;
+}
+
+.imageBoxVert > span {
+	font-size: 0rem;
+	height: 1vh;
+	line-height: 2;
+}
+
+.imageBoxVert:hover {
+	flex: 1 1 100%;
+}
+.imageBoxVert:hover > img {
+	width: 100%;
+	height: 100%;
+	object-fit: fit;
+}
+
+.imageBoxVert:hover > span {
+	font-size: 1.5rem;
 }
 
 /* Main Container */
