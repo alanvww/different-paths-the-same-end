@@ -83,3 +83,25 @@ footer > a {
 	-webkit-font-smoothing: subpixel-antialiased;
 	font-size: 3vw;
 }
+
+button {
+	display: block;
+	width: 100vw;
+	height: 10vh;
+	border: none;
+	color: black;
+	background-color: rgb(255, 255, 255);
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font-size: 2rem;
+	font-family: yu-mincho-pr6n, sans-serif;
+	margin-bottom: 1%;
+	transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+	background-color: #000000;
+	color: white;
+	text-decoration: underline;
+}
