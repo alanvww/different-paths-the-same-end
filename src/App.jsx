@@ -41,7 +41,11 @@ function App() {
 				</div>
 
 				<button className="viewTextButton no-select" onClick={showEng}>
-					{eng ? '中文版' : 'English Version'}
+					{eng ? (
+						<span className="chtFont">中文版</span>
+					) : (
+						<span className="engFont">English Version</span>
+					)}
 				</button>
 
 				<Maps eng={eng} />
