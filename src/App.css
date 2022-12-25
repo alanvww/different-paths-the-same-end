@@ -1,6 +1,8 @@
 @font-face {
 	font-family: Ku-Mincho;
-	src: local('Ku-Mincho'), url(./assets/fonts/KuMincho-R.otf) format('otf');
+	src: local('Ku-Mincho'), url(./assets/fonts/KuMincho-R.otf) format('opentype');
+	font-weight: normal;
+	font-style: normal;
 }
 
 * {
@@ -70,6 +72,9 @@ footer > a {
 	pointer-events: none;
 	position: relative;
 	text-align: center;
+	font-family: Ku-Mincho;
+	font-weight: 400;
+	font-style: normal;
 	font-size: 10vw;
 	letter-spacing: 1vw;
 	color: black;
