@@ -100,7 +100,7 @@ button {
 	text-align: center;
 	text-decoration: none;
 	font-size: 2rem;
-	font-family: yu-mincho-pr6n, sans-serif;
+	font-family: Ku-Mincho;
 	margin-bottom: 1%;
 	transition: all 0.3s ease-in-out;
 }
@@ -112,7 +112,7 @@ button:hover {
 }
 
 .engFont {
-	font-family: yu-mincho-pr6n, sans-serif;
+	font-family: Ku-Mincho;
 	font-weight: 400;
 	font-style: normal;
 }

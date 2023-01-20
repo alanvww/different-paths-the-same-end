@@ -42,7 +42,6 @@ export default class Tiles extends React.Component {
 	}
 	render() {
 		const { total, columns, rows } = this.state;
-		console.log([columns, rows], total);
 		return (
 			<div id="grid">
 				{[...Array(total)].map((x, i) => (

@@ -1,6 +1,5 @@
-import React, { Suspense, lazy } from 'react';
-import { useCallback, useLayoutEffect, useRef, useState } from 'react';
-import { AdobeFonts } from 'react-adobe-fonts';
+import React, { Suspense } from 'react';
+import { useState } from 'react';
 import Maps from './components/maps';
 import Text from './components/text';
 import EngText from './components/engText';
@@ -10,18 +9,6 @@ import './App.css';
 import './styles/tiles.css';
 
 function App() {
-	const [isLoading, setIsLoading] = useState(false);
-	const [isActive, setIsActive] = useState(false);
-
-	const onLoading = useCallback(() => {
-		setIsLoading(true);
-	}, []);
-
-	const onActive = useCallback(() => {
-		setIsLoading(false);
-		setIsActive(true);
-	}, []);
-
 	const [eng, setEng] = useState(false);
 
 	const showEng = () => {
@@ -30,7 +17,6 @@ function App() {
 
 	return (
 		<>
-			<AdobeFonts kitId="lkf2tqm" onLoading={onLoading} onActive={onActive} />
 			<Suspense fallback={<div>Loading...</div>}>
 				<div className="first-panel no-select">
 					<Tiles />
